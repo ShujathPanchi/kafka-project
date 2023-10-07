@@ -1,0 +1,37 @@
+Kafka Project
+
+===Download the kafka from the below URL - https://kafka.apache.org/quickstart
+
+===Extract and download the Kafka and run the zookeeper and kafka servers using the below commands===
+
+bin\windows\kafka-server-start config\server.properties
+
+bin\windows\zookeeper-server-start config\zookeeper.properties
+
+====Console based event driven===
+
+===create a new topic using a new cmd prompt===
+
+bin\windows\kafka-topics.bat --create --topic user-topic --bootstrap-server localhost:9092
+
+===Produce a new message by using the below command in different cmd prompt====
+
+bin\windows\kafka-console-producer.bat --topic user-topic --bootstrap-server localhost:9092
+
+===Consume a new message by using a new cmd prompt====
+
+bin\windows\kafka-console-consumer.bat --topic user-topic --from-beginning --bootstrap-server localhost:9092
+
+Producer configuration
+spring.kafka.producer.bootstrap-servers=localhost:9092
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+
+
+Consumer configuration
+server.port=8081
+spring.kafka.consumer.bootstrap-servers=localhost:9092
+spring.kafka.consumer.group-id=group-id
+spring.kafka.consumer.auto-offset-reset=earliest
+spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
